@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Set Data !!!</title>
+</head>
+
+<body>
+
+  <button class="btn btn-primary btn-sm btn_auth" id="btn_auth" name="btn_auth" >Auth</button>
+  <button class="btn btn-primary btn-sm btn_credential" id="btn_credential" name="btn_credential" >Get Credential</button>
+  <button class="btn btn-primary btn-sm btn_test" id="btn_test" name="btn_test" >Test</button>
+  <button class="btn btn-primary btn-sm btn_execute" id="btn_execute" name="btn_execute" >Execute</button>
+</body>
+</html>
+<script src="/assets/jquery-1.11.1.js" charset="utf-8"></script>
+<script>
+$(function(){
+  $('#btn_test').on('click' , function(evt){
+    var setdata = new FormData();
+    setdata.append('test','1111');
+    $.post('/api/test/form',{'fname':'Tossapol','lname':'Charoenporndeengam'},(evt)=>{
+      console.log('sss',evt);
+    });
+
+  });
+  $('#btn_execute').on('click' , function(evt){
+    $.get('/api/get/mail',(evt)=>{
+      console.log('execute : ',evt);
+    });
+  });
+  $('#btn_auth').on('click' , function(evt){
+    window.location.href='/api/auth/google';
+  });
+  $('#btn_credential').on('click' , function(evt){
+    $.get('/api/credential',(evt)=>{
+      console.log('Evt Get Credential :',evt);
+    });
+  });
+
+});
+</script>
